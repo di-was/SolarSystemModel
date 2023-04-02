@@ -14,12 +14,13 @@ const ctx = canvas.getContext('2d')
 //drawPlanet(ctx, makePlanet('green', undefined, 6, 100))
 
 let planets = {
-    0:  makePlanet('green', undefined, 6, 100),
-    1: makePlanet('green', undefined, 6, 100),
-    2: makePlanet('lightgreen', undefined, 100, 400, 500),
-    3: makePlanet('white', undefined, 10, 200),
-
+    "0":  makePlanet('green', undefined, 6, 100),
+    "1": makePlanet('blue', undefined, 6, 100),
+    "2": makePlanet('lightgreen', undefined, 100, 400, 500),
+    "3": makePlanet('white', undefined, 10, 200),
+    "4": makePlanet('yellow', undefined, 10, 20)
 }
+
 
 
 function setAnimation() {
@@ -28,19 +29,18 @@ function setAnimation() {
     let totalPlanets = Object.keys(planets)
 
     for (let i=0; i < totalPlanets.length; i++) {
+
         
-        drawPlanet(ctx, planets[totalPlanets[i]])
-        
-    }
+
+        drawPlanet(ctx, planets[i])
     
-
-    setInterval(setAnimation, 10000)
-
+    }
+    requestAnimationFrame(setAnimation)
+    
 }
 
-document.addEventListener('keydown', (e) => {
-    
-        
+document.addEventListener('click', (e) => {
+  
 })
 
-requestAnimationFrame(setAnimation)
+setAnimation()

@@ -6,14 +6,16 @@ export const primaryPlanetSkeleton = {
     yaxis: window.innerHeight / 2,
     startingAngle: 0,
     endingAngle: 2 * Math.PI,
-    counterClockwise: false
+    counterClockwise: false,
+    xacceleration: 0.1,
+    yacceleration: 0.1,
 }
 
 export function makePlanet(color, mass, radius, xaxis, yaxis) {
     if (color==undefined && mass==undefined && radius==undefined && xaxis==undefined && yaxis==undefined) {
-        return primaryPlanetSkeleton
+        return {...primaryPlanetSkeleton}
     } else {
-        let secondaryPlanetSekelton = primaryPlanetSkeleton
+        let secondaryPlanetSekelton = {...primaryPlanetSkeleton}
 
         if (color !== undefined) {
             secondaryPlanetSekelton.color = color
