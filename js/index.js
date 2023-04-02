@@ -1,7 +1,7 @@
 //-----Imports------
 import { primaryPlanetSkeleton,  makePlanet } from "./planets.js";
 import { drawPlanet } from "./draw.js";
-import { updateMotion } from "./physics.js";
+import { updateMotion2 } from "./physics.js";
 
 //------Initilization------------
 
@@ -25,16 +25,19 @@ function setAnimation() {
     let totalPlanets = Object.keys(planets)
 
     for (let i=0; i < totalPlanets.length; i++) {
-        if (totalPlanets.length >= 0) {
-
-            let requiredVelocity =  updateMotion({...planets[totalPlanets[i]]}, {...planets})
-            planets[totalPlanets[i]].velocity.xaxis += requiredVelocity.x
-            planets[totalPlanets[i]].velocity.yaxis += requiredVelocity.y
+        if (totalPlanets.length > 1) {
+         
+            planets = updateMotion2(planets)
+    
+            planets[totalPlanets[i]].velocity.xaxis += planets[totalPlanets[i]].acceleration.xaxis
+            planets[totalPlanets[i]].velocity.yaxis += planets[totalPlanets[i]].acceleration.yaxis
 
             planets[totalPlanets[i]].xaxis += planets[totalPlanets[i]].velocity.xaxis
-            planets[totalPlanets[i]].yaxis += planets[totalPlanets[i]].velocity.xaxis
-            drawPlanet(ctx, planets[totalPlanets[i]])
+            planets[totalPlanets[i]].yaxis += planets[totalPlanets[i]].velocity.yaxis
+           
+        
         }
+        drawPlanet(ctx, planets[totalPlanets[i]])
     }
     //console.log(planets)
     requestAnimationFrame(setAnimation)
