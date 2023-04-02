@@ -1,14 +1,14 @@
 export const primaryPlanetSkeleton = {
     color: 'blue',
-    mass: 6.046e24,
+    mass: 50000,
     radius: 6,
     xaxis: window.innerWidth / 2,
     yaxis: window.innerHeight / 2,
     startingAngle: 0,
     endingAngle: 2 * Math.PI,
     counterClockwise: false,
-    xacceleration: 0.1,
-    yacceleration: 0.1,
+    velocity: {xaxis: 0, yaxis: 0},
+    acceleration: {xaxis: 0, yaxis: 0}
 }
 
 export function makePlanet(color, mass, radius, xaxis, yaxis) {

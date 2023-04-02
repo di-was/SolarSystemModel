@@ -1,6 +1,7 @@
 //-----Imports------
 import { primaryPlanetSkeleton,  makePlanet } from "./planets.js";
 import { drawPlanet } from "./draw.js";
+import { updateMotion } from "./physics.js";
 
 //------Initilization------------
 
@@ -14,13 +15,8 @@ const ctx = canvas.getContext('2d')
 //drawPlanet(ctx, makePlanet('green', undefined, 6, 100))
 
 let planets = {
-    "0":  makePlanet('green', undefined, 6, 100),
-    "1": makePlanet('blue', undefined, 6, 100),
-    "2": makePlanet('lightgreen', undefined, 100, 400, 500),
-    "3": makePlanet('white', undefined, 10, 200),
-    "4": makePlanet('yellow', undefined, 10, 20)
-}
 
+}
 
 
 function setAnimation() {
@@ -29,18 +25,27 @@ function setAnimation() {
     let totalPlanets = Object.keys(planets)
 
     for (let i=0; i < totalPlanets.length; i++) {
+        if (totalPlanets.length >= 0) {
 
-        
+            let requiredVelocity =  updateMotion({...planets[totalPlanets[i]]}, {...planets})
+            planets[totalPlanets[i]].velocity.xaxis += requiredVelocity.x
+            planets[totalPlanets[i]].velocity.yaxis += requiredVelocity.y
 
-        drawPlanet(ctx, planets[i])
-    
+            planets[totalPlanets[i]].xaxis += planets[totalPlanets[i]].velocity.xaxis
+            planets[totalPlanets[i]].yaxis += planets[totalPlanets[i]].velocity.xaxis
+            drawPlanet(ctx, planets[totalPlanets[i]])
+        }
     }
+    //console.log(planets)
     requestAnimationFrame(setAnimation)
     
 }
 
 document.addEventListener('click', (e) => {
-  
+    const x = e.clientX
+    const y = e.clientY
+    const key = Date.now().toString()
+    planets[key] = makePlanet('green', undefined, 50, x, y)
 })
 
 setAnimation()
