@@ -13,10 +13,9 @@ export const primaryPlanetSkeleton = {
 
 export function makePlanet(color, mass, radius, xaxis, yaxis) {
     if (color==undefined && mass==undefined && radius==undefined && xaxis==undefined && yaxis==undefined) {
-        return {...primaryPlanetSkeleton}
+        return structuredClone(primaryPlanetSkeleton)
     } else {
-        let secondaryPlanetSekelton = {...primaryPlanetSkeleton}
-
+        let secondaryPlanetSekelton = structuredClone(primaryPlanetSkeleton)
         if (color !== undefined) {
             secondaryPlanetSekelton.color = color
         }
