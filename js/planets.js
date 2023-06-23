@@ -1,6 +1,6 @@
 export const primaryPlanetSkeleton = {
     color: 'blue',
-    mass: 50000,
+    mass: 5,
     radius: 6,
     xaxis: window.innerWidth / 2,
     yaxis: window.innerHeight / 2,
