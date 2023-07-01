@@ -70,6 +70,10 @@ export class Vector {
         return  this.division(this.length())
     }
 
+    clone() {
+        return new Vector(this.x, this.y)
+    }
+
 }
 
 
