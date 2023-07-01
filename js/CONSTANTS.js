@@ -1,0 +1,4 @@
+export const PLANET_DENSITY = 1;
+export const UNIVERSAL_GRAVITATIONAL_CONSTANT = 1;
+export const DEFAULT_PLANET_COLOR = "red";
+export const DEFAULT_PLANET_RADIUS = 10
