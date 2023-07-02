@@ -1,9 +1,9 @@
-export function drawPlanet(context, planetSkeleton) {
-    context.lineWidth = 5
+export function drawPlanet(context, planet) {
+    context.lineWidth = 1
     context.beginPath();
-    context.arc(planetSkeleton.xaxis, planetSkeleton.yaxis, planetSkeleton.radius, planetSkeleton.startingAngle , planetSkeleton.endingAngle)
+    context.arc(planet.coordinates.x, planet.coordinates.y, planet.radius, 0 , Math.PI * 2)
     context.strokeStyle = 'black'
-    context.fillStyle = planetSkeleton.color
+    context.fillStyle = planet.color
     context.fill()
     context.stroke()
 }

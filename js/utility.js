@@ -1,4 +1,4 @@
-import { Vector } from "./Vector"
+import { Vector } from "./Vector.js"
 
 export function check_collsions(planet1, planet2) {
     let distnace = planet1.coordinates.subtraction(planet2.coordinates)
@@ -20,14 +20,11 @@ export function resolve_collision(planet1, planet2) {
     if (dot >= 0) {
         let total_mass = planet1.mass + planet2.mass
         let c = distance.multiply(2 * dot / total_mass)
-
         planet1.velocity.set(planet1.velocity.addition(c.multiply(planet2.mass)))
-        planet2.velocity.set(planet2.veloctiy.subtraction(c.multiply(planet1.mass)))
+        planet2.velocity.set(planet2.velocity.subtraction(c.multiply(planet1.mass)))
     }
 }
 
-export class mouse {
-    constructor(position) {
-        position = new Vector()
-    }
+export let mouse = {
+    position : new Vector()
 }

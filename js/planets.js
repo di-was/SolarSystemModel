@@ -10,7 +10,4 @@ export class Planets {
         this.acceleration = new Vector()
         this.color = DEFAULT_PLANET_COLOR
     }
-
-    check_collision(){}
-    resolve_collision(){}
 }
